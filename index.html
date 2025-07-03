@@ -4,9 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="logo-gros.png" />
-  <link rel="website icon" type="image/png" href="logo-gros.png" />
-  <link rel="shortcut icon" type="image/png" href="logo-gros.png" />
-  <title>Sites By Thomas, Développeur Web Freelance</title>
+  <link rel="website icon" type="image/png" href="logo-gros.png" />   
+  <title>Développeur Web Freelance</title>
   <style>
     body {
       margin: 0;
@@ -28,14 +27,14 @@
     }
 
     nav a {
-      color: #00bcd4;
+      color: #ffffff;
       margin: 0 15px;
       font-weight: bold;
       transition: color 0.3s;
     }
 
     nav a:hover {
-      color: #fff;
+      color: #107cff;
     }
 
     header {
@@ -101,7 +100,7 @@
       display: inline-block;
       margin-top: 25px;
       padding: 12px 24px;
-      background-color: #00bcd4;
+      background-color: #107cff;
       color: #121212;
       border-radius: 6px;
       font-weight: bold;
@@ -109,7 +108,7 @@
     }
 
     .button:hover {
-      background-color: #00acc1;
+      background-color: #d4d6d9;
     }
 
     section {
@@ -119,7 +118,7 @@
     }
 
     section h2 {
-      color: #00bcd4;
+      color: #107cff;
       border-bottom: 2px solid #333;
       padding-bottom: 8px;
       margin-bottom: 25px;
@@ -147,7 +146,7 @@
 
     .card-top h3 {
       margin-bottom: 10px;
-      color: #00bcd4;
+      color: #ffffff;
     }
 
     .card-top p {
@@ -190,7 +189,7 @@
 
     .portfolio-item h3 {
       margin: 15px 0 5px;
-      color: #00acc1;
+      color: #107cff;
     }
 
     .portfolio-item p {
@@ -206,7 +205,7 @@
   text-align: center;
 }
 
-.card11, .card22, .card33 {
+.card11, .card22, .card33, .card44 {
   width: 100%;
   max-width: 905px;
   height: 434px;
@@ -231,7 +230,7 @@
 
 
 .card11 {
-  background-image: url('eco.png');
+  background-image: url('vitrine.png');
   animation: autoShowAnimation;
       animation-timeline: view();
     }
@@ -249,10 +248,16 @@ animation: autoShowAnimation;
 animation: autoShowAnimation;
       animation-timeline: view();
     }
+
+.card44 {
+  background-image: url('eco.png');
+animation: autoShowAnimation;
+      animation-timeline: view();
+    }
     
 
 .portfolio-item h3 {
-  color: #00acc1;
+  color: #107cff;
   margin: 0;
 }
 
@@ -280,6 +285,23 @@ animation: autoShowAnimation;
   filter: brightness(1.2);
 }
 
+.image-fixee {
+      position: absolute;
+      top: 1365px;   /* distance depuis le haut */
+      left: 70px;   /* distance depuis la gauche */
+      width: 150px; /* taille de l'image */
+    }
+    
+    .site-logo {
+  transition: all 0.4s ease;
+}
+
+.logo-small {
+  height: 100px !important; /* Taille réduite du logo-gros.png au scroll */
+  margin-left: 4%;
+  margin-top: 6%;
+}
+
 
     footer {
       background: #1a1a1a;
@@ -297,6 +319,7 @@ animation: autoShowAnimation;
       .header-content p {
         font-size: 1rem;
       }
+
       .card11, .card22, .card33 {
   animation: autoShowAnimation;
       animation-timeline: view();
@@ -354,6 +377,7 @@ animation: autoShowAnimation;
   </p>
   </section>
 
+   <img src="" class="image-fixee">
   <!-- Services -->
   <section id="services">
     <h2>Prestations</h2>
@@ -376,10 +400,11 @@ animation: autoShowAnimation;
   <!-- Portfolio -->
 <section id="portfolio">
   <h2>Portfolio</h2>
-<p>Cliquez pour explorez chaque projet comme si vous y étiez !</p>
+  <p>Cliquez pour explorez chaque projet comme si vous y étiez !</p>
+
      <div class="portfolio-list">
   <div class="portfolio-item">
-    <a href="e-commerce.html" style="display: block; width: 100%;">
+    <a href="entreprise.html" style="display: block; width: 100%;">
       <div class="card11"></div>
     </a>
     <h3>Projet 1</h3>
@@ -395,11 +420,19 @@ animation: autoShowAnimation;
   </div>
 
   <div class="portfolio-item">
-    <a href="index.html" style="display: block; width: 100%;">
+    <a href="acceuil.html" style="display: block; width: 100%;">
       <div class="card33"></div>
     </a>
     <h3>Projet 3</h3>
     <p>Site vitrine destiné à valoriser l’image de l’entreprise, présenter ses services, son expertise et ses réalisations. (Vue/Express)</p>
+  </div>
+
+  <div class="portfolio-item">
+    <a href="ecommerce.html" style="display: block; width: 100%;">
+      <div class="card44"></div>
+    </a>
+    <h3>Projet 4</h3>
+    <p>Site e-commerce ou vitrine dédié à la présentation et à la vente de produits.</p>
   </div>
   </div>
 </section>
@@ -408,7 +441,7 @@ animation: autoShowAnimation;
   <!-- Contact -->
   <section id="contact">
     <h2>Contact</h2>
-    <p>Pour me contacter, cliquez ici pour envoyer un mail :<a href="mailto:Sitesbythomas@gmail.com">" Sitesbythomas@gmail.com "</a> ou sur mes autres platformes:</p>
+    <p>Envoyez-moi un message via <a href="mailto:Sitesbythomas@gmail.com">" Sitesbythomas@gmail.com "</a> ou sur :</p>
     <div class="contact-icons">
   <a href="https://www.linkedin.com/in/thomas-jacobucci-3317aa351/" target="_blank" class="icon-link">
     <img src="lkdn.png" alt="LinkedIn" />
@@ -427,25 +460,29 @@ animation: autoShowAnimation;
    &copy; Sites by Thomas Dévlopé par "SitesbyThomas"— Tous droits réservés.
   </footer>
 
-  <script>
-  
+ <script>
   const logo = document.querySelector('.site-logo');
-  let lastScroll = 0;
+  const logoDefault = 'logo.png';
+  const logoScrolled = 'logo-gros.png';
 
   window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY;
+    const scrollY = window.scrollY;
 
-    if (currentScroll > lastScroll && currentScroll > 100) {
-      // On descend
-      logo.classList.add('logo-hidden');
+    if (scrollY > 300) {
+      if (!logo.src.includes(logoScrolled)) {
+        logo.src = logoScrolled;
+      }
+      logo.classList.add('logo-small');
     } else {
-      // On remonte
-      logo.classList.remove('logo-hidden');
+      if (!logo.src.includes(logoDefault)) {
+        logo.src = logoDefault;
+      }
+      logo.classList.remove('logo-small');
     }
-
-    lastScroll = currentScroll;
   });
 </script>
+
+
 
 </body>
 </html>
