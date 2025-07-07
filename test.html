@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="logo-gros.png" />
+  <link rel="website icon" type="image/png" href="logo-gros.png" />  
+  <title>e-Skin | Skincare français haute qualité</title>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #333333;
+  background-color: #fffaf5;
+  line-height: 1.6;
+}
+.hero {
+  background: url('https://images.pexels.com/photos/3762876/pexels-photo-3762876.jpeg') center/cover no-repeat;
+  padding: 100px 20px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+.hero p {
+  font-size: 20px;
+}
+.cta {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: darkorange;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+}
+.social-proof {
+  background-color: #ffe4c4;
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
+}
+.catalogue {
+  padding: 60px 20px;
+  text-align: center;
+}
+.catalogue h2 {
+  margin-bottom: 30px;
+}
+.product-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.product {
+  width: 280px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 15px;
+}
+.product img {
+  width: 100%;
+  border-radius: 6px;
+}
+.product h3 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+.price {
+  font-weight: bold;
+  color: darkorange;
+}
+.btn-buy {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background: darkorange;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.benefits {
+  background: #fff3e6;
+  padding: 60px 20px;
+  text-align: center;
+}
+.benefits-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.benefit {
+  width: 300px;
+  background: white;
+  padding: 20px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+.guarantee {
+  background: #ffe5b4;
+  text-align: center;
+  padding: 40px 20px;
+}
+.faq {
+  padding: 60px 20px;
+}
+.faq h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.faq-item {
+  max-width: 700px;
+  margin: 0 auto 20px;
+}
+.faq-item h3 {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.contact {
+  background: #fffaf0;
+  padding: 60px 20px;
+  text-align: center;
+}
+.contact form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.contact input,
+.contact textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.contact button {
+  padding: 12px;
+  background: darkorange;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.final-cta {
+  text-align: center;
+  background: #f8d0a9;
+  padding: 50px 20px;
+}
+footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.logo {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 1000;
+  padding: 4px 6px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 4px;
+}
+
+.logo img {
+  height: 30px; /* Taille contrôlée du logo image */
+  display: block;
+}
+
+.cart {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 6px 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.cart img {
+  height: 24px;
+  width: 24px;
+}
+.cart-count {
+  margin-left: 6px;
+  background: darkorange;
+  color: white;
+  border-radius: 50%;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.cart-panel {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 2000;
+  display: none;
+  border-radius: 8px;
+}
+.cart-panel h3 {
+  margin-bottom: 10px;
+}
+.cart-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px;
+}
+.cart-panel li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.cart-panel button {
+  background: darkorange;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+ .uiverse {
+  --duration: 7s;
+  --easing: linear;
+  --c-color-1: rgba(0, 72, 255, 0.7);
+  --c-color-2: #020687;
+  --c-color-3: #11dbff;
+  --c-color-4: rgba(106, 255, 225, 0.7);
+  --c-shadow: rgba(87, 104, 255, 0.5);
+  --c-shadow-inset-top: rgba(0, 89, 255, 0.9);
+  --c-shadow-inset-bottom: rgba(255, 250, 215, 0.8);
+  --c-radial-inner: #001aff;
+  --c-radial-outer: #72ffe3;
+  --c-color: #fff;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  outline: none;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  display: table;
+  border-radius: 24px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  color: var(--c-color);
+  background: radial-gradient(
+    circle,
+    var(--c-radial-inner),
+    var(--c-radial-outer) 80%
+  );
+  box-shadow: 0 0 14px var(--c-shadow);
+}
+
+.uiverse:before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 24px;
+  box-shadow:
+    inset 0 3px 12px var(--c-shadow-inset-top),
+    inset 0 -3px 4px var(--c-shadow-inset-bottom);
+}
+
+.uiverse .wrapper {
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  overflow: hidden;
+  border-radius: 24px;
+  min-width: 132px;
+  padding: 12px 0;
+}
+
+.uiverse .wrapper span {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.uiverse:hover {
+  --duration: 1400ms;
+}
+
+.uiverse .wrapper .circle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  filter: blur(var(--blur, 8px));
+  background: var(--background, transparent);
+  transform: translate(var(--x, 0), var(--y, 0)) translateZ(0);
+  animation: var(--animation, none) var(--duration) var(--easing) infinite;
+}
+
+.uiverse .wrapper .circle.circle-1,
+.uiverse .wrapper .circle.circle-9,
+.uiverse .wrapper .circle.circle-10 {
+  --background: var(--c-color-4);
+}
+
+.uiverse .wrapper .circle.circle-3,
+.uiverse .wrapper .circle.circle-4 {
+  --background: var(--c-color-2);
+  --blur: 14px;
+}
+
+.uiverse .wrapper .circle.circle-5,
+.uiverse .wrapper .circle.circle-6 {
+  --background: var(--c-color-3);
+  --blur: 16px;
+}
+
+.uiverse .wrapper .circle.circle-2,
+.uiverse .wrapper .circle.circle-7,
+.uiverse .wrapper .circle.circle-8,
+.uiverse .wrapper .circle.circle-11,
+.uiverse .wrapper .circle.circle-12 {
+  --background: var(--c-color-1);
+  --blur: 12px;
+}
+
+.uiverse .wrapper .circle.circle-1 {
+  --x: 0;
+  --y: -40px;
+  --animation: circle-1;
+}
+
+.uiverse .wrapper .circle.circle-2 {
+  --x: 92px;
+  --y: 8px;
+  --animation: circle-2;
+}
+
+.uiverse .wrapper .circle.circle-3 {
+  --x: -12px;
+  --y: -12px;
+  --animation: circle-3;
+}
+
+.uiverse .wrapper .circle.circle-4 {
+  --x: 80px;
+  --y: -12px;
+  --animation: circle-4;
+}
+
+.uiverse .wrapper .circle.circle-5 {
+  --x: 12px;
+  --y: -4px;
+  --animation: circle-5;
+}
+
+.uiverse .wrapper .circle.circle-6 {
+  --x: 56px;
+  --y: 16px;
+  --animation: circle-6;
+}
+
+.uiverse .wrapper .circle.circle-7 {
+  --x: 8px;
+  --y: 28px;
+  --animation: circle-7;
+}
+
+.uiverse .wrapper .circle.circle-8 {
+  --x: 28px;
+  --y: -4px;
+  --animation: circle-8;
+}
+
+.uiverse .wrapper .circle.circle-9 {
+  --x: 20px;
+  --y: -12px;
+  --animation: circle-9;
+}
+
+.uiverse .wrapper .circle.circle-10 {
+  --x: 64px;
+  --y: 16px;
+  --animation: circle-10;
+}
+
+.uiverse .wrapper .circle.circle-11 {
+  --x: 4px;
+  --y: 4px;
+  --animation: circle-11;
+}
+
+.uiverse .wrapper .circle.circle-12 {
+  --blur: 14px;
+  --x: 52px;
+  --y: 4px;
+  --animation: circle-12;
+}
+
+@keyframes circle-1 {
+  33% {
+    transform: translate(0px, 16px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(12px, 64px) translateZ(0);
+  }
+}
+
+@keyframes circle-2 {
+  33% {
+    transform: translate(80px, -10px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(72px, -48px) translateZ(0);
+  }
+}
+
+@keyframes circle-3 {
+  33% {
+    transform: translate(20px, 12px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(12px, 4px) translateZ(0);
+  }
+}
+
+@keyframes circle-4 {
+  33% {
+    transform: translate(76px, -12px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(112px, -8px) translateZ(0);
+  }
+}
+
+@keyframes circle-5 {
+  33% {
+    transform: translate(84px, 28px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(40px, -32px) translateZ(0);
+  }
+}
+
+@keyframes circle-6 {
+  33% {
+    transform: translate(28px, -16px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(76px, -56px) translateZ(0);
+  }
+}
+
+@keyframes circle-7 {
+  33% {
+    transform: translate(8px, 28px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(20px, -60px) translateZ(0);
+  }
+}
+
+@keyframes circle-8 {
+  33% {
+    transform: translate(32px, -4px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(56px, -20px) translateZ(0);
+  }
+}
+
+@keyframes circle-9 {
+  33% {
+    transform: translate(20px, -12px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(80px, -8px) translateZ(0);
+  }
+}
+
+@keyframes circle-10 {
+  33% {
+    transform: translate(68px, 20px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(100px, 28px) translateZ(0);
+  }
+}
+
+@keyframes circle-11 {
+  33% {
+    transform: translate(4px, 4px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(68px, 20px) translateZ(0);
+  }
+}
+
+@keyframes circle-12 {
+  33% {
+    transform: translate(56px, 0px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(60px, -32px) translateZ(0);
+  }
+}
+.bottom-center {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+    }
+
+
+  </style>
+</head>
+<body>
+     <div class="bottom-center">
+  <a href="../index.html#po">
+  <button class="uiverse">
+    <div class="wrapper">
+      <span>RETOUR</span>
+      <div class="circle circle-12"></div>
+      <div class="circle circle-11"></div>
+      <div class="circle circle-10"></div>
+      <div class="circle circle-9"></div>
+      <div class="circle circle-8"></div>
+      <div class="circle circle-7"></div>
+      <div class="circle circle-6"></div>
+      <div class="circle circle-5"></div>
+      <div class="circle circle-4"></div>
+      <div class="circle circle-3"></div>
+      <div class="circle circle-2"></div>
+      <div class="circle circle-1"></div>
+    </div>
+  </button>
+</a>
+</div>
+<div class="logo">
+                <img src="logo2.png" alt="e-Skin Logo">
+            </div>
+            <a class="cart" href="panier.html">
+  <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" alt="Panier">
+  <span class="cart-count">0</span>
+</a>
+
+  <!-- HERO / INTRO -->
+  <header class="hero">
+    <div class="hero-text">
+      <h1>e-Skin : Révélez votre peau</h1>
+      <p>Des soins français haut de gamme. Livraison express. Résultats visibles dès les premières applications.</p>
+      <a href="#produits" class="cta">Je découvre la gamme</a>
+    </div>
+  </header>
+
+  <!-- SOCIAL PROOF -->
+  <section class="social-proof">
+    <p>+15 000 clients satisfaits en France</p>
+    <p>Noté 4.8/5 sur TrustBeauty</p>
+    <p>100% fabrication française</p>
+  </section>
+
+  <!-- CATALOGUE -->
+  <section id="produits" class="catalogue">
+    <h2>Nos Meilleures Ventes</h2>
+    <div class="product-grid">
+      <div class="product">
+        <img src="https://images.pexels.com/photos/3785147/pexels-photo-3785147.jpeg" alt="Sérum éclat">
+        <h3>Sérum Éclat Intense</h3>
+        <p class="price">39,90 €</p>
+        <a class="btn-buy" href="#" data-id="1" data-name="Sérum Éclat Intense" data-price="39.90">Ajouter au panier</a>
+
+      </div>
+      <div class="product">
+        <img src="https://images.pexels.com/photos/3212164/pexels-photo-3212164.jpeg" alt="Crème de jour">
+        <h3>Crème Hydratante 24h</h3>
+        <p class="price">29,90 €</p>
+        <a class="btn-buy" href="#" data-id="2" data-name="Crème Hydratante 24h" data-price="29.90">Ajouter au panier</a>
+
+      </div>
+      <div class="product">
+        <img src="https://images.pexels.com/photos/3736397/pexels-photo-3736397.jpeg" alt="Nettoyant visage">
+        <h3>Nettoyant Purifiant</h3>
+        <p class="price">19,90 €</p>
+       <a class="btn-buy" href="#" data-id="3" data-name="Nettoyant Purifiant" data-price="19.90">Ajouter au panier</a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AVANTAGES CLIENT -->
+  <section class="benefits">
+    <h2>Pourquoi choisir e-Skin ?</h2>
+    <div class="benefits-grid">
+      <div class="benefit">
+        <h3>Livraison en 48h</h3>
+        <p>Recevez vos produits directement chez vous en 2 jours ouvrés.</p>
+      </div>
+      <div class="benefit">
+        <h3>Ingrédients naturels</h3>
+        <p>98% d'origine naturelle. Aucun compromis sur l'efficacité.</p>
+      </div>
+      <div class="benefit">
+        <h3>Testé dermatologiquement</h3>
+        <p>Convient à tous les types de peau, même les plus sensibles.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GARANTIE -->
+  <section class="guarantee">
+    <h2>Notre garantie</h2>
+    <p>Pas satisfait ? Remboursé sous 14 jours. Sans poser de questions.</p>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2>Questions fréquentes</h2>
+    <div class="faq-item">
+      <h3>Est-ce que les produits sont bio ?</h3>
+      <p>Nos formules privilégient les ingrédients naturels, sans parabènes ni silicones.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Combien coûte la livraison ?</h3>
+      <p>Elle est gratuite dès 50€ d'achat. Sinon, 3,90€ seulement.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Comment suivre ma commande ?</h3>
+      <p>Un lien de suivi est envoyé dès l'expédition de votre colis.</p>
+    </div>
+  </section>
+
+  <!-- FORMULAIRE DE CONTACT -->
+  <section class="contact">
+    <h2>Une question ?</h2>
+    <form id="contact-form">
+      <input type="text" name="nom" placeholder="Votre nom" required>
+      <input type="email" name="email" placeholder="Votre email" required>
+      <textarea name="message" placeholder="Votre message..." required></textarea>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="final-cta">
+    <h2>Prêt à transformer votre peau ?</h2>
+    <a href="#produits" class="cta">Accéder à la boutique</a>
+  </section>
+
+  <footer>
+    <p>© 2025 SitesByThomas. Tous droits réservés.</p>
+  </footer>
+
+  <script>
+document.getElementById("contact-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+  alert("Merci pour votre message !");
+  this.reset();
+});
+
+// === PANIER ===
+const cartCount = document.querySelector('.cart-count');
+const buttons = document.querySelectorAll('.btn-buy');
+
+// Récupère le panier depuis localStorage ou crée un vide
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Fonction pour mettre à jour le compteur affiché dans l'icône panier
+function updateCartCount() {
+  const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+  cartCount.textContent = totalQty;
+}
+
+// Fonction pour ajouter un article au panier
+buttons.forEach(button => {
+  button.addEventListener('click', function(e) {
+    e.preventDefault();
+    const id = button.getAttribute('data-id');
+    const name = button.getAttribute('data-name');
+    const price = parseFloat(button.getAttribute('data-price'));
+
+    const existing = cart.find(item => item.id === id);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ id, name, price, qty: 1 });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+  });
+});
+
+// Mise à jour immédiate du compteur dès le chargement
+updateCartCount();
+</script>
+
+
+</body>
+</html>

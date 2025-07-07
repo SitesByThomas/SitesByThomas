@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="website icon" type="image/png" href="logo.png">
+  <title>KaryBeats</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #ff4d8d;
+      --secondary: #7928ca;
+      --dark: #0a0a0a;
+      --light: #f8f8f8;
+      --gray: #222222;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      min-height: 100vh;
+    }
+
+    body::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Navigation */
+    .nav {
+      display: flex;
+      justify-content: space-around;
+      padding: 1rem 0;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #aaa;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+
+    .nav-item:hover {
+      color: white;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .nav-item.active {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .logo-icon {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      margin-bottom: 4px;
+      filter: brightness(0) invert(1);
+    }
+
+    /* Hero Section */
+    .hero-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(121,40,202,0.2), rgba(10,10,10,1));
+    }
+
+    .logo-image {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 0 10px rgba(255,77,141,0.5));
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin: 0;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      color: #aaa;
+      font-size: 1.1rem;
+      margin: 1rem 0 2rem;
+      max-width: 600px;
+    }
+
+    .btn {
+      padding: 0.75rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: 0 4px 20px rgba(255, 77, 141, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(255, 77, 141, 0.4);
+    }
+
+    /* Tracks Section */
+    .tracks-container {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .tracks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .track-card {
+      background: var(--gray);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .track-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      border-color: rgba(255,77,141,0.3);
+    }
+
+    .track-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .track-content {
+      padding: 1.5rem;
+    }
+
+    .track-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+    }
+
+    .track-meta {
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .track-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .track-meta i {
+      font-size: 0.8rem;
+    }
+
+    /* Audio Player */
+    .audio-player {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .waveform {
+      height: 60px;
+      background: rgba(0,0,0,0.2);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .waveform::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(255,77,141,0.3), rgba(121,40,202,0.3));
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: waveformAnim 2s infinite linear;
+    }
+
+    @keyframes waveformAnim {
+      0% { transform: scaleX(0); }
+      100% { transform: scaleX(1); }
+    }
+
+    .audio-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .audio-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+
+    .audio-btn:hover {
+      background: var(--primary);
+      transform: scale(1.1);
+    }
+
+    .audio-btn.play-btn {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    .audio-btn.play-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .time-display {
+      font-size: 0.8rem;
+      color: #aaa;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 3rem 1rem;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(10,10,10,0), rgba(10,10,10,1));
+      margin-top: 3rem;
+    }
+
+    .footer h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-link {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 77, 141, 0.3);
+    }
+
+    .social-link i {
+      font-size: 1.2rem;
+    }
+
+    .copyright {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .tracks-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <a href="index.html" class="nav-item active">
+      <img src="home.png" alt="Accueil" class="logo-icon" />
+      <span>Accueil</span>
+    </a>
+
+    <a href="projets.html" class="nav-item">
+      <img src="oip.png" alt="projets" class="logo-icon" />
+      <span>Projets</span>
+    </a>
+
+    <a href="about.html" class="nav-item">
+      <img src="apr.png" alt="about" class="logo-icon" />
+      <span>À propos</span>
+    </a>
+  </nav>
+
+  <div class="hero-container">
+    <img src="logo.png" alt="logo" class="logo-image" />
+    
+    <div class="hero">
+      <h1>Des beats qui marquent l'époque</h1>
+      <p>Trap, drill, afro... Le son, c'est ici que ça commence.</p>
+      <a href="projets.html" class="btn btn-primary">Explorer les prods</a>
+    </div>
+  </div>
+
+  <div class="tracks-container">
+    <h2 class="section-title">Dernières Productions</h2>
+    
+    <div class="tracks-grid">
+      <!-- Track 1 -->
+      <div class="track-card">
+        <img src="abl1.png" alt="Skyfall" class="track-img" />
+        <div class="track-content">
+          <h3 class="track-title">Skyfall</h3>
+          <div class="track-meta">
+            <span><i class="fas fa-music"></i> Trap</span>
+            <span><i class="fas fa-tachometer-alt"></i> 140 BPM</span>
+            <span><i class="far fa-calendar-alt"></i> 2025</span>
+          </div>
+          
+          <div class="audio-player">
+            <div class="waveform"></div>
+            <div class="audio-controls">
+              <button class="audio-btn" onclick="skipBackward('skyfall')">
+                <i class="fas fa-step-backward"></i>
+              </button>
+              <button class="audio-btn play-btn" onclick="togglePlay('skyfall')">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="audio-btn" onclick="skipForward('skyfall')">
+                <i class="fas fa-step-forward"></i>
+              </button>
+              <div class="time-display">
+                <span class="current-time">0:00</span>
+                <span>/</span>
+                <span class="duration">2:45</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Track 2 -->
+      <div class="track-card">
+        <img src="alb2.png" alt="Midnight Zone" class="track-img" />
+        <div class="track-content">
+          <h3 class="track-title">Midnight Zone</h3>
+          <div class="track-meta">
+            <span><i class="fas fa-music"></i> Drill</span>
+            <span><i class="fas fa-tachometer-alt"></i> 144 BPM</span>
+            <span><i class="far fa-calendar-alt"></i> 2025</span>
+          </div>
+          
+          <div class="audio-player">
+            <div class="waveform"></div>
+            <div class="audio-controls">
+              <button class="audio-btn" onclick="skipBackward('midnight')">
+                <i class="fas fa-step-backward"></i>
+              </button>
+              <button class="audio-btn play-btn" onclick="togglePlay('midnight')">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="audio-btn" onclick="skipForward('midnight')">
+                <i class="fas fa-step-forward"></i>
+              </button>
+              <div class="time-display">
+                <span class="current-time">0:00</span>
+                <span>/</span>
+                <span class="duration">3:12</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Track 3 -->
+      <div class="track-card">
+        <img src="alb3.png" alt="Afro Drift" class="track-img" />
+        <div class="track-content">
+          <h3 class="track-title">Afro Drift</h3>
+          <div class="track-meta">
+            <span><i class="fas fa-music"></i> Afro</span>
+            <span><i class="fas fa-tachometer-alt"></i> 100 BPM</span>
+            <span><i class="far fa-calendar-alt"></i> 2025</span>
+          </div>
+          
+          <div class="audio-player">
+            <div class="waveform"></div>
+            <div class="audio-controls">
+              <button class="audio-btn" onclick="skipBackward('afro')">
+                <i class="fas fa-step-backward"></i>
+              </button>
+              <button class="audio-btn play-btn" onclick="togglePlay('afro')">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="audio-btn" onclick="skipForward('afro')">
+                <i class="fas fa-step-forward"></i>
+              </button>
+              <div class="time-display">
+                <span class="current-time">0:00</span>
+                <span>/</span>
+                <span class="duration">2:58</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <h2>Contact</h2>
+    <div class="socials">
+      <a href="https://www.instagram.com/prodbyk9ry/" class="social-link">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="#" class="social-link">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="#" class="social-link">
+        <i class="fab fa-youtube"></i>
+      </a>
+      <a href="#" class="social-link">
+        <i class="fab fa-spotify"></i>
+      </a>
+    </div>
+    <p class="copyright">© 2025 KaryBeats. Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    // Gestion des lecteurs audio
+    const audioPlayers = {
+      skyfall: {
+        element: null,
+        isPlaying: false,
+        currentTime: 0,
+        duration: 165 // en secondes (2:45)
+      },
+      midnight: {
+        element: null,
+        isPlaying: false,
+        currentTime: 0,
+        duration: 192 // en secondes (3:12)
+      },
+      afro: {
+        element: null,
+        isPlaying: false,
+        currentTime: 0,
+        duration: 178 // en secondes (2:58)
+      }
+    };
+
+    // Initialisation des lecteurs audio
+    function initAudioPlayers() {
+      // Ici vous devriez charger vos fichiers audio réels
+      // Pour l'exemple, nous créons des éléments audio fictifs
+      Object.keys(audioPlayers).forEach(track => {
+        audioPlayers[track].element = new Audio();
+        // audioPlayers[track].element.src = `path/to/${track}.mp3`;
+        
+        // Mise à jour du temps actuel
+        audioPlayers[track].element.addEventListener('timeupdate', () => {
+          audioPlayers[track].currentTime = audioPlayers[track].element.currentTime;
+          updateTimeDisplay(track);
+        });
+        
+        // Quand la piste est terminée
+        audioPlayers[track].element.addEventListener('ended', () => {
+          audioPlayers[track].isPlaying = false;
+          updatePlayButton(track);
+        });
+      });
+    }
+
+    // Basculer lecture/pause
+    function togglePlay(track) {
+      const player = audioPlayers[track];
+      
+      if (player.isPlaying) {
+        player.element.pause();
+      } else {
+        player.element.play();
+      }
+      
+      player.isPlaying = !player.isPlaying;
+      updatePlayButton(track);
+    }
+
+    // Mettre à jour l'affichage du bouton play/pause
+    function updatePlayButton(track) {
+      const btn = document.querySelector(`[onclick="togglePlay('${track}')] i`);
+      if (audioPlayers[track].isPlaying) {
+        btn.classList.replace('fa-play', 'fa-pause');
+      } else {
+        btn.classList.replace('fa-pause', 'fa-play');
+      }
+    }
+
+    // Avancer/reculer
+    function skipForward(track) {
+      audioPlayers[track].element.currentTime += 15;
+    }
+
+    function skipBackward(track) {
+      audioPlayers[track].element.currentTime -= 15;
+    }
+
+    // Mettre à jour l'affichage du temps
+    function updateTimeDisplay(track) {
+      const container = document.querySelector(`.track-card:has([onclick="togglePlay('${track}')"])`);
+      if (!container) return;
+      
+      const currentTimeSpan = container.querySelector('.current-time');
+      const durationSpan = container.querySelector('.duration');
+      
+      // Formatage du temps (mm:ss)
+      const formatTime = (seconds) => {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+      };
+      
+      currentTimeSpan.textContent = formatTime(audioPlayers[track].currentTime);
+      durationSpan.textContent = formatTime(audioPlayers[track].duration);
+    }
+
+    // Initialiser les lecteurs au chargement
+    window.addEventListener('DOMContentLoaded', initAudioPlayers);
+  </script>
+</body>
+</html>

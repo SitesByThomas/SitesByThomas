@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitrine Style Nike</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<style> * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Arial', sans-serif;
+  color: white;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: white;
+  color: black;
+}
+
+.logo {
+  height: 30px;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  font-size: 16px;
+}
+
+.icons {
+  font-size: 18px;
+}
+
+.hero {
+  position: relative;
+  height: 90vh;
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+.hero-text {
+  text-align: absolute;
+  margin-top: 200px;
+  max-width: 700px;
+  padding: 50px;
+  background: rgba(0, 0, 0, 0);
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.hero-text h4 {
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  color: #001eff;
+}
+
+.hero-text p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: white;
+  color: black;
+  padding: 12px 24px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background: #e6e6e6;
+}
+
+.hero-controls {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.hero-controls button {
+  font-size: 20px;
+  background: rgba(255,255,255,0.8);
+  border: none;
+  border-radius: 50%;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+.hero-slide {
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-slide.active {
+  pointer-events: auto;
+  z-index: 1;
+}
+.uiverse {
+  --duration: 7s;
+  --easing: linear;
+  --c-color-1: rgba(0, 72, 255, 0.7);
+  --c-color-2: #020687;
+  --c-color-3: #11dbff;
+  --c-color-4: rgba(106, 255, 225, 0.7);
+  --c-shadow: rgba(87, 104, 255, 0.5);
+  --c-shadow-inset-top: rgba(0, 89, 255, 0.9);
+  --c-shadow-inset-bottom: rgba(255, 250, 215, 0.8);
+  --c-radial-inner: #001aff;
+  --c-radial-outer: #72ffe3;
+  --c-color: #fff;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  outline: none;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  display: table;
+  border-radius: 24px;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  color: var(--c-color);
+  background: radial-gradient(
+    circle,
+    var(--c-radial-inner),
+    var(--c-radial-outer) 80%
+  );
+  box-shadow: 0 0 14px var(--c-shadow);
+}
+
+.uiverse:before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 24px;
+  box-shadow:
+    inset 0 3px 12px var(--c-shadow-inset-top),
+    inset 0 -3px 4px var(--c-shadow-inset-bottom);
+}
+
+.uiverse .wrapper {
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  overflow: hidden;
+  border-radius: 24px;
+  min-width: 132px;
+  padding: 12px 0;
+}
+
+.uiverse .wrapper span {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.uiverse:hover {
+  --duration: 1400ms;
+}
+
+.uiverse .wrapper .circle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  filter: blur(var(--blur, 8px));
+  background: var(--background, transparent);
+  transform: translate(var(--x, 0), var(--y, 0)) translateZ(0);
+  animation: var(--animation, none) var(--duration) var(--easing) infinite;
+}
+
+.uiverse .wrapper .circle.circle-1,
+.uiverse .wrapper .circle.circle-9,
+.uiverse .wrapper .circle.circle-10 {
+  --background: var(--c-color-4);
+}
+
+.uiverse .wrapper .circle.circle-3,
+.uiverse .wrapper .circle.circle-4 {
+  --background: var(--c-color-2);
+  --blur: 14px;
+}
+
+.uiverse .wrapper .circle.circle-5,
+.uiverse .wrapper .circle.circle-6 {
+  --background: var(--c-color-3);
+  --blur: 16px;
+}
+
+.uiverse .wrapper .circle.circle-2,
+.uiverse .wrapper .circle.circle-7,
+.uiverse .wrapper .circle.circle-8,
+.uiverse .wrapper .circle.circle-11,
+.uiverse .wrapper .circle.circle-12 {
+  --background: var(--c-color-1);
+  --blur: 12px;
+}
+
+.uiverse .wrapper .circle.circle-1 {
+  --x: 0;
+  --y: -40px;
+  --animation: circle-1;
+}
+
+.uiverse .wrapper .circle.circle-2 {
+  --x: 92px;
+  --y: 8px;
+  --animation: circle-2;
+}
+
+.uiverse .wrapper .circle.circle-3 {
+  --x: -12px;
+  --y: -12px;
+  --animation: circle-3;
+}
+
+.uiverse .wrapper .circle.circle-4 {
+  --x: 80px;
+  --y: -12px;
+  --animation: circle-4;
+}
+
+.uiverse .wrapper .circle.circle-5 {
+  --x: 12px;
+  --y: -4px;
+  --animation: circle-5;
+}
+
+.uiverse .wrapper .circle.circle-6 {
+  --x: 56px;
+  --y: 16px;
+  --animation: circle-6;
+}
+
+.uiverse .wrapper .circle.circle-7 {
+  --x: 8px;
+  --y: 28px;
+  --animation: circle-7;
+}
+
+.uiverse .wrapper .circle.circle-8 {
+  --x: 28px;
+  --y: -4px;
+  --animation: circle-8;
+}
+
+.uiverse .wrapper .circle.circle-9 {
+  --x: 20px;
+  --y: -12px;
+  --animation: circle-9;
+}
+
+.uiverse .wrapper .circle.circle-10 {
+  --x: 64px;
+  --y: 16px;
+  --animation: circle-10;
+}
+
+.uiverse .wrapper .circle.circle-11 {
+  --x: 4px;
+  --y: 4px;
+  --animation: circle-11;
+}
+
+.uiverse .wrapper .circle.circle-12 {
+  --blur: 14px;
+  --x: 52px;
+  --y: 4px;
+  --animation: circle-12;
+}
+
+@keyframes circle-1 {
+  33% {
+    transform: translate(0px, 16px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(12px, 64px) translateZ(0);
+  }
+}
+
+@keyframes circle-2 {
+  33% {
+    transform: translate(80px, -10px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(72px, -48px) translateZ(0);
+  }
+}
+
+@keyframes circle-3 {
+  33% {
+    transform: translate(20px, 12px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(12px, 4px) translateZ(0);
+  }
+}
+
+@keyframes circle-4 {
+  33% {
+    transform: translate(76px, -12px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(112px, -8px) translateZ(0);
+  }
+}
+
+@keyframes circle-5 {
+  33% {
+    transform: translate(84px, 28px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(40px, -32px) translateZ(0);
+  }
+}
+
+@keyframes circle-6 {
+  33% {
+    transform: translate(28px, -16px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(76px, -56px) translateZ(0);
+  }
+}
+
+@keyframes circle-7 {
+  33% {
+    transform: translate(8px, 28px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(20px, -60px) translateZ(0);
+  }
+}
+
+@keyframes circle-8 {
+  33% {
+    transform: translate(32px, -4px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(56px, -20px) translateZ(0);
+  }
+}
+
+@keyframes circle-9 {
+  33% {
+    transform: translate(20px, -12px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(80px, -8px) translateZ(0);
+  }
+}
+
+@keyframes circle-10 {
+  33% {
+    transform: translate(68px, 20px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(100px, 28px) translateZ(0);
+  }
+}
+
+@keyframes circle-11 {
+  33% {
+    transform: translate(4px, 4px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(68px, 20px) translateZ(0);
+  }
+}
+
+@keyframes circle-12 {
+  33% {
+    transform: translate(56px, 0px) translateZ(0);
+  }
+
+  66% {
+    transform: translate(60px, -32px) translateZ(0);
+  }
+}
+.bottom-center {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+    }
+</style>
+<body>
+<div class="bottom-center">
+  <a href="../index.html#foot">
+  <button class="uiverse">
+    <div class="wrapper">
+      <span>RETOUR</span>
+      <div class="circle circle-12"></div>
+      <div class="circle circle-11"></div>
+      <div class="circle circle-10"></div>
+      <div class="circle circle-9"></div>
+      <div class="circle circle-8"></div>
+      <div class="circle circle-7"></div>
+      <div class="circle circle-6"></div>
+      <div class="circle circle-5"></div>
+      <div class="circle circle-4"></div>
+      <div class="circle circle-3"></div>
+      <div class="circle circle-2"></div>
+      <div class="circle circle-1"></div>
+    </div>
+  </button>
+</a>
+</div>
+  <header class="navbar">
+    <img src="logo-gros.png" alt="Nike Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="#product-section">Nouveauté</a></li>
+        <li><a href="#product-section">Homme</a></li>
+        <li><a href="#product-section">Femme</a></li>
+        <li><a href="#product-section">Enfant</a></li>
+        <li><a href="#product-section">Offres</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      🔍 ❤️ 🛒
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-slide active" style="background-image: url('f4.jpg')">
+      <div class="hero-text">
+        <h4>Look de foot</h4>
+        <h1>BOUSCULE LES TRADITIONS</h1>
+        <p>Total 90, Gato et Field General.<br>Pour celles et ceux qui ne font pas comme tout le monde.</p>
+        <a href="#product-section" class="btn-primary">Acheter</a>
+      </div>
+    </div>
+
+    <div class="hero-slide" style="background-image: url('t1.jpg')">
+      <div class="hero-text">
+        <h4>Nouveau Drop</h4>
+       <h1>ÉDITION LIMITÉE</h1>
+        <p>Conçue pour briller sur et en dehors du terrain.</p>
+        <a href="#product-section" class="btn-primary">Découvrir</a>
+      </div>
+    </div>
+    
+    <div class="hero-slide" style="background-image: url('ff.jpg')">
+      <div class="hero-text">
+        <h4>Chngez d'horizon</h4>
+        <h1>CHANGE LES RÈGLES</h1>
+        <p>Cassez les codes du football.</p>
+        <a href="#product-section" class="btn-primary">Découvrir</a>
+      </div>
+    </div>
+
+    <div class="hero-controls">
+      <button id="prev">⟵</button>
+      <button id="pause">⏸</button>
+      <button id="next">⟶</button>
+    </div>
+  </section>
+
+  <section class="product-section" id="product-section" style="background:white; color:black; padding: 60px 40px;">
+  <h2 style="font-size: 2.5rem; text-align:center; margin-bottom: 40px;">Nos modèles</h2>
+  <div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+    
+    <div class="product-card" style="
+  max-width: 300px;
+  margin: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  background: white;
+  text-align: center;
+">
+  <div style="
+    width: 100%;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+  ">
+    <img src="fc.jpg" alt="Phantom GX" style="
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    ">
+  </div>
+  <div style="padding: 20px;">
+    <h3 style="font-size: 1.1rem; margin: 10px 0 5px;">Phantom GX</h3>
+    <p style="font-size: 0.9rem; color: #555;">Coloris : Bleu / Orange</p>
+    <button style="
+      margin-top: 15px;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 40px;
+      background: black;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    ">Acheter</button>
+  </div>
+</div>
+
+
+   <div class="product-card" style="
+   
+  max-width: 300px;
+  margin: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  background: white;
+  text-align: center;
+">
+  <div style="
+    width: 100%;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+  ">
+    <img src="cf2.jpg" alt="Phantom GX" style="
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    ">
+  </div>
+  <div style="padding: 20px;">
+    <h3 style="font-size: 1.1rem; margin: 10px 0 5px;">Phantom </h3>
+    <p style="font-size: 0.9rem; color: #555;">Coloris : Noir / Jaune</p>
+    <button style="
+      margin-top: 15px;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 40px;
+      background: black;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    ">Acheter</button>
+  </div>
+</div>
+
+<div class="product-card" style="
+   
+  max-width: 300px;
+  margin: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  background: white;
+  text-align: center;
+">
+  <div style="
+    width: 100%;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+  ">
+    <img src="ft2.jpg" alt="Phantom GX" style="
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    ">
+  </div>
+  <div style="padding: 20px;">
+    <h3 style="font-size: 1.1rem; margin: 10px 0 5px;">Pums T-Shirt</h3>
+    <p style="font-size: 0.9rem; color: #555;">Coloris : Blanc / Rose</p>
+    <button style="
+      margin-top: 15px;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 40px;
+      background: black;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    ">Acheter</button>
+  </div>
+</div>
+
+<div class="product-card" style="
+   
+  max-width: 300px;
+  margin: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  background: white;
+  text-align: center;
+">
+  <div style="
+    width: 100%;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+  ">
+    <img src="ft3.jpg" alt="Phantom GX" style="
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    ">
+  </div>
+  <div style="padding: 20px;">
+    <h3 style="font-size: 1.1rem; margin: 10px 0 5px;">NFL T-Shirt </h3>
+    <p style="font-size: 0.9rem; color: #555;">Coloris : Blanc / Bleu</p>
+    <button style="
+      margin-top: 15px;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 40px;
+      background: black;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    ">Acheter</button>
+  </div>
+</div>
+
+
+  </div>
+</section>
+
+  <script>
+    const slides = document.querySelectorAll('.hero-slide');
+let current = 0;
+let interval = setInterval(nextSlide, 2500);
+
+function showSlide(index) {
+  slides.forEach((s, i) => s.classList.toggle('active', i === index));
+}
+
+function nextSlide() {
+  current = (current + 1) % slides.length;
+  showSlide(current);
+}
+
+function prevSlide() {
+  current = (current - 1 + slides.length) % slides.length;
+  showSlide(current);
+}
+
+document.getElementById('next').addEventListener('click', nextSlide);
+document.getElementById('prev').addEventListener('click', prevSlide);
+document.getElementById('pause').addEventListener('click', () => {
+  if (interval) {
+    clearInterval(interval);
+    interval = null;
+    document.getElementById('pause').textContent = '▶';
+  } else {
+    interval = setInterval(nextSlide, 5000);
+    document.getElementById('pause').textContent = '⏸';
+  }
+});
+</script>
+</body>
+</html>
