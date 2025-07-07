@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="logo-gros.png" />
+  <link rel="website icon" type="image/png" href="logo-gros.png" />   
+  <title>Développeur Web Freelance</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    nav {
+      background: #1a1a1a;
+      text-align: center;
+      padding: 12px 0;
+    }
+
+    nav a {
+      color: #ffffff;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #107cff;
+    }
+
+    header {
+      position: relative;
+      height: 690px;
+      overflow: hidden;
+    }
+
+    .header-bg {
+      background-image: url('br.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .site-logo {
+  position: fixed;
+  top: -70px;
+  left: -20px;
+  height: 300px;
+  z-index: 10;
+  transition: opacity 0.5s ease, filter 2s ease;
+}
+.logo-scroll {
+  filter: brightness(0) invert(0.5);
+}
+.logo-hidden {
+  opacity: 0;
+  pointer-events: none; /* évite que le logo soit cliquable quand invisible */
+}
+
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .header-content h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .header-content p {
+      font-size: 1.2rem;
+      color: #e2e0e0;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 12px 24px;
+      background-color: #107cff;
+      color: #121212;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .button:hover {
+      background-color: #d4d6d9;
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    section h2 {
+      color: #107cff;
+      border-bottom: 2px solid #333;
+      padding-bottom: 8px;
+      margin-bottom: 25px;
+    }
+
+    .services {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .card-top {
+      
+       background-color: #272727;
+      height: 300px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(43, 43, 43, 0.404);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .card-top h3 {
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    .card-top p {
+      color: #ddd;
+      margin: 0;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+
+    .portfolio-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+    .portfolio-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+  max-width: 900px;
+    }
+      
+
+    .portfolio-card {
+      width: 100%;
+      height: 300px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .portfolio-item h3 {
+      margin: 15px 0 5px;
+      color: #107cff;
+    }
+
+    .portfolio-item p {
+      color: #bbb;
+      font-size: 0.95rem;
+    }
+
+    .portfolio-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.card11, .card22, .card33, .card44, .card55, .card66, 
+.card77 {
+  width: 100%;
+  max-width: 905px;
+  height: 434px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 15px;
+  animation: autoShowAnimation;
+      animation-timeline: view();
+    }
+    @keyframes autoShowAnimation {
+      from {
+        opacity: 0;
+        transform: translateY(0px) scale(0.3);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+
+.card11 {
+  background-image: url('vitrine.png');
+  animation: autoShowAnimation;
+      animation-timeline: view();
+    }
+   
+
+.card22 {
+  background-image: url('maint.png');
+animation: autoShowAnimation;
+      animation-timeline: view();
+    }
+    
+
+.card33 {
+  background-image: url('bur.png');
+animation: autoShowAnimation;
+      animation-timeline: view();
+    }
+
+.card44 {
+  background-image: url('eco.png');
+animation: autoShowAnimation;
+      animation-timeline: view();
+    }
+
+    .card55 {
+  background-image: url('vc.png');
+animation: autoShowAnimation;
+      animation-timeline: view();
+    }
+
+    .card66 {
+  background-image: url('kary.png');
+animation: autoShowAnimation;
+      animation-timeline: view();
+    }
+.card77 {
+  background-image: url('bt.png');
+animation: autoShowAnimation;
+      animation-timeline: view();
+    }
+
+
+    
+
+.portfolio-item h3 {
+  color: #107cff;
+  margin: 0;
+}
+
+.portfolio-item p {
+  color: #ccc;
+  margin-top: 5px;
+}
+   
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.icon-link img {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s, filter 0.3s;
+  filter: brightness(0.9);
+}
+
+.icon-link:hover img {
+  transform: scale(1.15);
+  filter: brightness(1.2);
+}
+
+.image-fixee {
+      position: absolute;
+      top: 1365px;   /* distance depuis le haut */
+      left: 70px;   /* distance depuis la gauche */
+      width: 150px; /* taille de l'image */
+    }
+    
+    .site-logo {
+  transition: all 0.4s ease;
+}
+
+.logo-small {
+  height: 100px !important; /* Taille réduite du logo-gros.png au scroll */
+  margin-left: 4%;
+  margin-top: 6%;
+}
+
+
+    footer {
+      background: #1a1a1a;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    @media (max-width: 600px) {
+      .header-content h1 {
+        font-size: 2rem;
+      }
+
+      .header-content p {
+        font-size: 1rem;
+      }
+
+      .card11, .card22, .card33, .card44, .card55, .card66, 
+.card77 {
+  animation: autoShowAnimation;
+      animation-timeline: view();
+    }
+    @keyframes autoShowAnimation {
+      from {
+        opacity: 0;
+        transform: translateY(0px) scale(0.3);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-bg">
+      <img src="logo1.png" alt="Logo" class="site-logo" />
+      <div class="overlay"></div>
+      <div class="header-content">
+        <h1>Développeur Web Freelance</h1>
+        <p>Sites performants, modernes & personnalisés</p>
+        <a href="#portfolio" class="button">Voir mes projets</a>
+      </div>
+    </div>
+  </header>
+
+
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#apropos">À propos</a>
+    <a href="#services">Prestations</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- À propos -->
+  <section id="apropos">
+    <h2>À propos</h2>
+     <p>
+    Basée sur l’écoute, la rigueur et l’innovation, notre jeune entreprise se spécialise dans la création de sites web sur mesure pour les particuliers, les artisans, les indépendants et les petites entreprises. Nous transformons vos idées en solutions digitales modernes, performantes et parfaitement adaptées à vos besoins spécifiques.
+  </p>
+  <p>
+    Que vous ayez besoin d’un site vitrine élégant, d’une boutique en ligne intuitive, d’un tunnel de vente optimisé pour la conversion ou d’une plateforme technique avancée, nous concevons des interfaces uniques, personnalisées et entièrement optimisées pour tous les supports (mobile, tablette, desktop).
+  </p>
+  <p>
+    Notre priorité : valoriser votre activité à travers une présence web à la hauteur de votre image, avec un accompagnement humain, réactif et transparent à chaque étape.
+  </p>
+  </section>
+
+   <img src="" class="image-fixee">
+  <!-- Services -->
+  <section id="services">
+    <h2>Prestations</h2>
+    <div class="services">
+      <div class="card-top">
+        <h3>Site vitrine</h3>
+        <p>Un site professionnel pour présenter votre activité en ligne.</p>
+      </div>
+      <div class="card-top">
+        <h3>E-commerce</h3>
+        <p>Boutique en ligne sur mesure avec création d'un tunnel de vente.</p>
+      </div>
+      <div class="card-top">
+        <h3>Maintenance</h3>
+        <p>Support technique professionnel pour la gestion de vos services et appareils.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+<section id="portfolio">
+  <h2>Portfolio PC</h2>
+  <p>Cliquez pour explorez chaque projet comme si vous y étiez !<br> Spéciale ordinateur !</p>
+
+     <div class="portfolio-list">
+  <div class="portfolio-item"  id="foot">
+    <a href="foot/entreprise.html" style="display: block; width: 100%;">
+      <div class="card11"></div>
+    </a>
+    <h3>Projet 1</h3>
+    <p>Site e-commerce ou vitrine dédié à la présentation et à la vente de produits.</p>
+  </div>
+
+
+
+ <div class="portfolio-item"  id="reserv1">
+    <a href="vac/Vacance.html" style="display: block; width: 100%;">
+      <div class="card55"></div>
+    </a>
+    <h3>Projet 2</h3>
+    <p>Site e-commerce ou vitrine dédié à la présentation et à la vente de produits.</p>
+  </div>
+
+
+
+  <div class="portfolio-item" id="maint">
+    <a href="maint/maintanance.html" style="display: block; width: 100%;">
+      <div class="card22"></div>
+    </a>
+    <h3>Projet 3</h3>
+    <p>Site professionnel, exemple: dédié à la présentation des services de maintenance, d’assistance technique et d’interventions sur mesure.</p>
+  </div>
+
+  <div class="portfolio-item" id=" site">
+    <a href="index.html" style="display: block; width: 100%;">
+      <div class="card33"></div>
+    </a>
+    <h3>Projet 4</h3>
+    <p>Site vitrine destiné à valoriser l’image de l’entreprise, présenter ses services, son expertise et ses réalisations. (Vue/Express)</p>
+  </div>
+
+  <div class="portfolio-item" id="ecommerce">
+    <a href="e-co/ecommerce.html" style="display: block; width: 100%;">
+      <div class="card44"></div>
+    </a>
+    <h3>Projet 5</h3>
+    <p>Site e-commerce ou vitrine dédié à la présentation et à la vente de produits.</p>
+  </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <h2>Portfolio TEL</h2>
+  <p>Cliquez pour explorez chaque projet comme si vous y étiez !<br> Spéciale Téléphone !</p>
+
+  <div class="portfolio-list">
+  <div class="portfolio-item"  id="vac">
+    <a href="vac/Vacance.html" style="display: block; width: 100%;">
+      <div class="card55"></div>
+    </a>
+    <h3>Projet 1</h3>
+    <p>Site e-commerce ou vitrine dédié à la présentation et à la vente de produits.</p>
+  </div>
+
+
+  <div class="portfolio-item"  id="kary">
+    <a href="prod-site/indexk.html" style="display: block; width: 100%;">
+      <div class="card66"></div>
+    </a>
+    <h3>Projet 2</h3>
+    <p>Site vitrine dédié à la présentation de des prokets d'un Beatmaker.</p>
+  </div>
+
+  <div class="portfolio-item"  id="po">
+    <a href="produit/test.html" style="display: block; width: 100%;">
+      <div class="card77"></div>
+    </a>
+    <h3>Projet 3</h3>
+    <p>Site e-commerce ou vitrine dédié à la présentation et à la vente de produits.</p>
+  </div>
+
+
+
+
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Envoyez-moi un message via <a href="mailto:Sitesbythomas@gmail.com">" Sitesbythomas@gmail.com "</a> ou sur :</p>
+    <div class="contact-icons">
+  <a href="https://www.linkedin.com/in/thomas-jacobucci-3317aa351/" target="_blank" class="icon-link">
+    <img src="lkdn.png" alt="LinkedIn" />
+  </a>
+  <a href="https://www.instagram.com/sitesbythomas/" target="_blank" class="icon-link">
+    <img src="instagram.png" alt="Instagram" />
+  </a>
+  <a href="tel:+3364332444" class="icon-link">
+    <img src="tel.png" alt="Téléphone" />
+  </a>
+</div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+   &copy; Sites by Thomas Dévlopé par "SitesbyThomas"— Tous droits réservés.
+  </footer>
+
+ <script>
+  const logo = document.querySelector('.site-logo');
+  const logoDefault = 'logo1.png';
+  const logoScrolled = 'logo-gros.png';
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+
+    if (scrollY > 300) {
+      if (!logo.src.includes(logoScrolled)) {
+        logo.src = logoScrolled;
+      }
+      logo.classList.add('logo-small');
+    } else {
+      if (!logo.src.includes(logoDefault)) {
+        logo.src = logoDefault;
+      }
+      logo.classList.remove('logo-small');
+    }
+  });
+</script>
+
+
+
+</body>
+</html>
